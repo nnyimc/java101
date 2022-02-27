@@ -1,3 +1,5 @@
+package com.acme.testing;
+import com.acme.utils.MyDate;
 
 public class TestMyDate {
 	public static void main(String[] args){
