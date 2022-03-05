@@ -31,9 +31,11 @@ public class TestOrders {
 		MyDate date3 = new MyDate(5, 20, 2008);
 		Order anotherAnvil = new Order(date3, 200, "Road Runner");
 		System.out.println(anotherAnvil);
-
+		
 		System.out.println("The total bill for: " + anvilOrder + " is " + anvilOrder.computeTotal());
 		System.out.println("The total bill for: " + balloonsOrder + " is " + balloonsOrder.computeTotal());
+		
+		balloonsOrder.setQuantity(-2);
 	}
 
 }

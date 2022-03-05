@@ -2,13 +2,13 @@ package com.acme.domain;
 import com.acme.utils.MyDate;
 
 public class Order {
-	MyDate orderDate;
-	double orderAmount = 0.00;
-	String customer;
-	String product;
-	int quantity;
+	private MyDate orderDate;
+	private double orderAmount = 0.00;
+	private String customer;
+	private String product;
+	private int quantity;
 	public static double taxRate;
-	public static double TAX_ABSORPTION_THRESHOLD = 1500d;
+	public final static double TAX_ABSORPTION_THRESHOLD = 1500d;
 	
 	static {
 		Order.taxRate = 0.05; 
@@ -16,7 +16,9 @@ public class Order {
 	
 	public Order(MyDate d, double amt, String c){
 		orderDate=d;
-		orderAmount=amt;
+		if (isPositive(amt)) {
+			orderAmount=amt;
+		}
 		customer=c;
 		product = "Anvil";
 		quantity = 1;
@@ -25,10 +27,11 @@ public class Order {
 	public Order(MyDate d, double amt, String c,String p, int q){
 		this(d, amt, c);
 		product=p;
-		quantity=q;
+		if (isPositive(q)) {
+			quantity=q;
+		}
+		
 	}
-	
-	
 	
 	public static void setTaxRate(double taxRate) {
 		Order.taxRate = taxRate;
@@ -83,6 +86,66 @@ public class Order {
 		}
 	}
 	
+	public MyDate getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(MyDate orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public double getOrderAmount() {
+		return orderAmount;
+	}
+
+	public void setOrderAmount(double orderAmount) {
+		if ( isPositive(orderAmount) ) {
+			this.orderAmount = orderAmount;
+		}
+	}
+
+	public String getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(String customer) {
+		this.customer = customer;
+	}
+
+	public String getProduct() {
+		return product;
+	}
+
+	public void setProduct(String product) {
+		this.product = product;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		if ( isPositive(quantity) ) {
+			this.quantity = quantity;
+		}
+	}
+
+
+	private boolean isPositive(double orderAmount) {
+		if ( orderAmount > 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static double getTaxRate() {
+		return taxRate;
+	}
+
+	public static double getTaxAbsorptionThreshold() {
+		return TAX_ABSORPTION_THRESHOLD;
+	}
+
 	public String toString(){
 		return quantity + " ea. " + product + " for " + customer; 
 	}
