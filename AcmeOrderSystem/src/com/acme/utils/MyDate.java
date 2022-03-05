@@ -28,5 +28,13 @@ public class MyDate {
 		this.day = day;
 		this.year = year;
 	}
+	
+	public static void leapYears() {
+		for (int i = 1752; i <=2020; i++ ) {
+			if (i % 4 == 0 && i % 100 != 0 ) {
+				System.out.println(i + " is a leap year!");
+			}
+		}
+	}
 
 }
