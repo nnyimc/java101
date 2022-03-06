@@ -12,7 +12,21 @@ public class Person {
     static {
         personCount = 40;
     }
-    public static void main(String[] args) {
+    
+    private String firstName;
+    private String lastName;
+    
+    public Person() {
+    	
+    }
+    
+    public Person(String firstName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+	public static void main(String[] args) {
        System.out.println(Person.personCount); 
        Person p = new Person();
        System.out.println(Person.personCount);
