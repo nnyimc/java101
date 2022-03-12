@@ -1,11 +1,12 @@
 package com.acme.domain;
+import com.acme.domain.Good.UnitOfMeasureType;
 import com.acme.utils.MyDate;
 
 public class Order {
 	private MyDate orderDate;
 	private double orderAmount = 0.00;
 	private String customer;
-	private String product;
+	private Product product;
 	private int quantity;
 	public static double taxRate;
 	public final static double TAX_ABSORPTION_THRESHOLD = 1500d;
@@ -20,11 +21,11 @@ public class Order {
 			orderAmount=amt;
 		}
 		customer=c;
-		product = "Anvil";
+		product = new Solid("Anvil", 1, 0.95, UnitOfMeasureType.CUBIC_FEET, false,98.27, 0.91, 1.10);
 		quantity = 1;
 	}
 	
-	public Order(MyDate d, double amt, String c,String p, int q){
+	public Order(MyDate d, double amt, String c,Product p, int q){
 		this(d, amt, c);
 		product=p;
 		if (isPositive(q)) {
@@ -112,11 +113,11 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public String getProduct() {
+	public Product getProduct() {
 		return product;
 	}
 
-	public void setProduct(String product) {
+	public void setProduct(Product product) {
 		this.product = product;
 	}
 

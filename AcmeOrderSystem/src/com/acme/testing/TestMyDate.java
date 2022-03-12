@@ -48,5 +48,15 @@ public class TestMyDate {
 	    System.out.println("Before the call, StringBuilder= " + stringBuilder);
 	    PassByExperiment.passStringBuilder(stringBuilder);
 	    System.out.println("After the call StringBuilder= " + stringBuilder);
+	    
+	    MyDate newYear = new MyDate(1,1,2021);
+	    MyDate fiscalStart = new MyDate(1,15,2021);
+	    
+	    if (newYear.equals(fiscalStart)) {
+	    	System.out.println("These two dates are equal.");
+	    } else {
+	    	System.out.println("These two dates are not equal.");
+	    }
+	    
 	}
 }

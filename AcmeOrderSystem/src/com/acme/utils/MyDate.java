@@ -90,5 +90,15 @@ public class MyDate {
 			}
 		}
 	}
+	
+	public boolean equals(Object o) {
+		if (o instanceof MyDate) {
+			MyDate date = (MyDate) o;
+			if ( (date.day == day) && (date.month == month) && (date.year == year) ) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
