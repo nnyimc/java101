@@ -4,6 +4,18 @@ public class MyDate {
 	private byte month;
 	private byte day;
 	private short year;
+	public static MyDate[] holidays;
+	
+	static {
+		holidays = new MyDate[6];
+		holidays[0] = new MyDate(1, 1, 2023);
+		holidays[1] = new MyDate(9, 5, 2023);
+		holidays[2] = new MyDate(5, 30, 2023);
+		holidays[3] = new MyDate(11, 24, 2023);
+		holidays[4] = new MyDate(7, 4, 2023);
+		holidays[5] = new MyDate(12, 25, 2023);
+	}
+	
 	
 	{
 		this.month = 1;
@@ -24,7 +36,7 @@ public class MyDate {
 	}
 	
 	public String toString() {
-		return "Today's date is : " + month + "/" + day + "/" + year;
+		return month + "/" + day + "/" + year;
 	}
 	
 	public void setDate( int month, int day, int year) {
@@ -99,6 +111,17 @@ public class MyDate {
 			}
 		}
 		return false;
+	}
+
+	public static MyDate[] getHolidays() {
+		return holidays;
+	}
+	
+	public static void listHolidays() {
+		System.out.println("The holidays are: ");
+		for (MyDate d: holidays) {
+			System.out.println(d.toString());
+		}
 	}
 
 }

@@ -50,6 +50,7 @@ public class TestOrders {
 		System.out.println("The length of the anvil is: " + ( (Solid) anotherAnvil.getProduct() ).getLength());
 
 		MyDate date4 = new MyDate(2,3,2020);
+		MyDate date5 = new MyDate(1, 1, 2023);
 		Service service1 = new Service("Road Runner Eradication", 10, false);
 		Order birdEradication = new Order (date4, 20000, "Daffy Duck", service1, 2);
 		System.out.println("The total bill for " + birdEradication + " is " + birdEradication.computeTotal());
@@ -66,6 +67,10 @@ public class TestOrders {
 		System.out.println(balloonsOrder.isPriorityOrder());
 		System.out.println(anotherAnvil.isPriorityOrder());
 		System.out.println(birdEradication.isPriorityOrder());
+		
+		Order anotherEradication = new Order (date5, 20000, "Daffy Duck", service1, 2);
+		
+		
 	}
 
 }

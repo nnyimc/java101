@@ -28,7 +28,7 @@ public class TestConversionService {
 		System.out.println(byteGrams);
 
 		// why do these still work even though the types are different
-		
+
 		System.out.println("------------------------------------");
 		double ounces = ConversionService.fluidOunces(1.1f);
 		System.out.println(ounces);
@@ -46,9 +46,8 @@ public class TestConversionService {
 		System.out.println(ConversionService.ounces(new BigDecimal(50.5f)));
 		System.out.println(ConversionService.pints(6L));
 		System.out.println(ConversionService.pounds(new BigDecimal(7L)));
-		
 
-		// compare these results.  Can you tell why they are different?
+		// compare these results. Can you tell why they are different?
 		System.out.println("------------------------------------");
 		float bigGallons = ConversionService.gallons(123456789123456789L);
 		System.out.println(bigGallons);
@@ -56,11 +55,21 @@ public class TestConversionService {
 		System.out.println(bigGallons2);
 
 		System.out.println("------------------------------------");
-		BigDecimal bigGrams = ConversionService.grams( new BigDecimal("1234567890").intValue());
+		BigDecimal bigGrams = ConversionService.grams(new BigDecimal("1234567890").intValue());
 		System.out.println(bigGrams);
 		long bigGrams2 = 1234567890L * 1000L;
 		System.out.println(bigGrams2);
+
+		double[][] results = ConversionService.allKgsToPounds(14.0, 29.0, 6.5, 7.7);
+		for (double[] result : results) {
+			System.out.println(result[0] + "->" + result[1]);
+		}
 		
+		results = ConversionService.allKgsToPounds(2, 5, 8, 4);
+		for (double[] result : results) {
+		 System.out.println(result[0] + "->" + result[1]);
+		}
+
 	}
 
 }

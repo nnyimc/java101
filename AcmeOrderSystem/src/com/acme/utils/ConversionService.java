@@ -36,4 +36,15 @@ public class ConversionService {
 		return liters * literToMilliliters;
 	}
 	
+	
+	public static double[][] allKgsToPounds(double... kilogramValues){ 
+		double[][] conversionTable = new double[kilogramValues.length][2];
+		int i = 0;
+		for( double d: kilogramValues) {
+			double[] conversion = {d, d * kilogramToPounds.doubleValue()};
+			conversionTable[i] = conversion;
+			i++;
+		}
+		return conversionTable;
+ 	}
 }
