@@ -10,6 +10,7 @@ public class Order {
 	private int quantity;
 	public static double taxRate;
 	public final static double TAX_ABSORPTION_THRESHOLD = 1500d;
+	private static Rushable rushable;
 	
 	static {
 		Order.taxRate = 0.05; 
@@ -87,6 +88,23 @@ public class Order {
 		}
 	}
 	
+	
+	public static Rushable getRushable() {
+		return rushable;
+	}
+
+	public static void setRushable(Rushable rushable) {
+		Order.rushable = rushable;
+	}
+	
+	public boolean isPriorityOrder() {
+		boolean priorityOrder = false;
+		if (rushable != null) {
+			priorityOrder = rushable.isRushable(orderDate, orderAmount);
+		}
+		return priorityOrder;
+	}
+
 	public MyDate getOrderDate() {
 		return orderDate;
 	}
@@ -150,4 +168,5 @@ public class Order {
 	public String toString(){
 		return quantity + " ea. " + product + " for " + customer; 
 	}
+
 }

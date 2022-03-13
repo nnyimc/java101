@@ -1,5 +1,7 @@
 package com.acme.testing;
 
+import java.time.LocalDate;
+
 import com.acme.domain.Good.UnitOfMeasureType;
 import com.acme.domain.Order;
 import com.acme.domain.Service;
@@ -52,6 +54,18 @@ public class TestOrders {
 		Order birdEradication = new Order (date4, 20000, "Daffy Duck", service1, 2);
 		System.out.println("The total bill for " + birdEradication + " is " + birdEradication.computeTotal());
 		
+		Order.setRushable(
+				(orderDate, orderAmount) -> {
+					LocalDate now = LocalDate.now();
+					LocalDate retrievedOrderDate = LocalDate.of(orderDate.getYear(), orderDate.getMonth(), orderDate.getDay());
+					return now.isAfter(retrievedOrderDate.plusMonths(1));
+			}
+		);
+		
+		System.out.println(anvilOrder.isPriorityOrder());
+		System.out.println(balloonsOrder.isPriorityOrder());
+		System.out.println(anotherAnvil.isPriorityOrder());
+		System.out.println(birdEradication.isPriorityOrder());
 	}
 
 }
