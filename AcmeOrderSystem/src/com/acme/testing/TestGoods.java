@@ -1,5 +1,10 @@
 package com.acme.testing;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import com.acme.domain.Good;
 import com.acme.domain.Good.UnitOfMeasureType;
 import com.acme.domain.Liquid;
@@ -7,6 +12,7 @@ import com.acme.domain.Solid;
 
 public class TestGoods {
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		Liquid glue = new Liquid("Acme Glue", 2334, 4, UnitOfMeasureType.LITER, false, 15, 6);
 		Liquid paint = new Liquid("Acme Invisible Paint", 2490, 0.65, UnitOfMeasureType.GALLON, true, 0.70, 12);
@@ -27,7 +33,23 @@ public class TestGoods {
 		System.out.println(glue + " can ship via Post office? " + glue.canShipViaPostOffice());
 		System.out.println(anvil + " can ship via Post office? " + anvil.canShipViaPostOffice());
 		System.out.println(paint + " can ship via Post office? " + paint.canShipViaPostOffice());
-
+		
+		System.out.println(Good.getCatalog());
+		Good.getCatalog().remove(paint);
+		Solid toaster = new Solid("Acme Toaster", 1755, 0.75,
+		UnitOfMeasureType.CUBIC_FEET, false, 1.0, 1.0, 1.0);
+		Good.getCatalog().add(toaster);
+		Good.getCatalog().add(toaster);
+		System.out.println(Good.getCatalog());
+		
+		System.out.println("Flammable products: " +
+				Good.flammablesList());
+		
+		List<Good> rawList =  new ArrayList<Good>(Good.getCatalog());
+		Collections.sort( rawList );
+		System.out.println( rawList );
+		int index = Collections.binarySearch(rawList, toaster);
+		System.out.println(index);
 	}
 
 }

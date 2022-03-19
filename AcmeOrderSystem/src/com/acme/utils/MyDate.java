@@ -88,7 +88,7 @@ public class MyDate {
 		 case 4:
 		 case 6:
 		 case 9:
-		 case 11: return (day <= 30);
+		 case 11: return day <= 30;
 		 case 2: return day <= 28 || ( day == 29 && year % 4 == 0) ;
 		 }
 		 return true;
